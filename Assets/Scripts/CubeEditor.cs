@@ -3,15 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [ExecuteInEditMode]
+[SelectionBase]
+[RequireComponent(typeof(Waypoint))]
 public class CubeEditor : MonoBehaviour
 {
 
-    [Range(1f, 20f)] [SerializeField] float gridSize = 10f;
-
-    TextMesh textMesh;
-    Vector3 snapPos;
     
 
+    Waypoint waypoint;
+    
+    
+    void Awake()
+    {
+        waypoint = GetComponent<Waypoint>();    
+    }
     void Start()
     {
         
@@ -25,19 +30,19 @@ public class CubeEditor : MonoBehaviour
 
     }
 
-    private void LabelText()
+    private void LabelText()//Updates text on cube with coordinates
     {
-        textMesh = GetComponentInChildren<TextMesh>();
-        string labelText = snapPos.x / 10f + "," + snapPos.z / 10f;
+        int gridSize = waypoint.GetGridSize();
+        TextMesh textMesh = GetComponentInChildren<TextMesh>();
+        string labelText = waypoint.GetGridPos().x / gridSize + "," + waypoint.GetGridPos().y/ gridSize;
         textMesh.text = labelText;
         gameObject.name = labelText;
     }
 
-    private void CubeSnaping()
+    private void CubeSnaping() //Snaps cube to grid
     {
-        
-        snapPos.x = Mathf.RoundToInt(transform.position.x / 10f) * gridSize;
-        snapPos.z = Mathf.RoundToInt(transform.position.z / 10f) * gridSize;
-        transform.position = new Vector3(snapPos.x, 0f, snapPos.z);
+        int gridSize = waypoint.GetGridSize();
+
+        transform.position = new Vector3(waypoint.GetGridPos().x, 0f,waypoint.GetGridPos().y);
     }
 }

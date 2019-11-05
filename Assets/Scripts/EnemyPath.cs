@@ -19,15 +19,13 @@ public class EnemyPath : MonoBehaviour
 
     }
 
-    IEnumerator FollowPath()
+    IEnumerator FollowPath()//Moves the enemy along a path determined by the List Waypoint
     {
-        print("Starting");
         foreach (Waypoint waypoint in path)
         {
             transform.position = waypoint.transform.position;
             print("Waypoint: " + waypoint.name);
             yield return new WaitForSeconds(1);
         }
-        print("Ending");
     }
 }
