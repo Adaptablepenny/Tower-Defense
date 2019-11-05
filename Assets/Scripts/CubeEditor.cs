@@ -10,6 +10,7 @@ public class CubeEditor : MonoBehaviour
 
     TextMesh textMesh;
     Vector3 snapPos;
+    
 
     void Start()
     {
@@ -19,14 +20,17 @@ public class CubeEditor : MonoBehaviour
     void Update()
     {
         CubeSnaping();
-        CoordinateText();
+        LabelText();
+        
 
     }
 
-    private void CoordinateText()
+    private void LabelText()
     {
         textMesh = GetComponentInChildren<TextMesh>();
-        textMesh.text = snapPos.x / 10f + "," + snapPos.z / 10f;
+        string labelText = snapPos.x / 10f + "," + snapPos.z / 10f;
+        textMesh.text = labelText;
+        gameObject.name = labelText;
     }
 
     private void CubeSnaping()

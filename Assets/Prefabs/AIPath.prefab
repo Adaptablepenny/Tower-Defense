@@ -569,6 +569,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1169125609601980686}
   - component: {fileID: 3055150735390748065}
+  - component: {fileID: 5062192858630330726}
   m_Layer: 0
   m_Name: AIPath
   m_TagString: Untagged
@@ -609,6 +610,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridSize: 10
+--- !u!114 &5062192858630330726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7227497971232550112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 770f5f27f22409a4fb4df92b597b3b78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7959407104714087360
 GameObject:
   m_ObjectHideFlags: 0
@@ -687,7 +700,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7959407104714087360}
-  m_Text: xx,xx
+  m_Text: 0,0
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
