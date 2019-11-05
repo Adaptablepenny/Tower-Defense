@@ -17,12 +17,12 @@ public class Waypoint : MonoBehaviour
         return gridSize;
     }
 
-    public Vector2 GetGridPos() //Gets the position of the grid and allows snaping of the GameObject in units * whatever the grid size is
+    public Vector2Int GetGridPos() //Gets the position of the grid and allows snaping of the GameObject in units * whatever the grid size is
     {
         return new Vector2Int
             (
-                gridPos.x = Mathf.RoundToInt(transform.position.x / 10f) * gridSize,
-                gridPos.y = Mathf.RoundToInt(transform.position.z / 10f) * gridSize
+                gridPos.x = Mathf.RoundToInt(transform.position.x / gridSize) * gridSize,
+                gridPos.y = Mathf.RoundToInt(transform.position.z / gridSize) * gridSize
             );
     }
 
