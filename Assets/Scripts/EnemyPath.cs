@@ -24,7 +24,7 @@ public class EnemyPath : MonoBehaviour
         foreach (Waypoint waypoint in path)
         {
             transform.position = waypoint.transform.position;
-            print("Waypoint: " + waypoint.name);
+            print("Waypoint: " + waypoint.name);        
             yield return new WaitForSeconds(1);
         }
     }
