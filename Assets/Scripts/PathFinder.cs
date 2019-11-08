@@ -16,6 +16,7 @@ public class PathFinder : MonoBehaviour
         LoadBlocks();
         ColorStartAndEnd();
         ExploreNeighbours();
+        PrintGridValues();
         
     }
 
@@ -66,13 +67,14 @@ public class PathFinder : MonoBehaviour
         
     }
 
-    void PrintGrid()
+    void PrintGridValues()
     {
         foreach (Waypoint waypoint in grid.Values)
         {
             print(waypoint.name);
         }
     }
+
 
     // Update is called once per frame
     void Update()
