@@ -12,16 +12,14 @@ public class PathFinder : MonoBehaviour
     Vector2Int[] directions = { Vector2Int.up, Vector2Int.down, Vector2Int.right, Vector2Int.left };
     Queue<Waypoint> queue = new Queue<Waypoint>();
     bool isRunning = true;
+    Waypoint searchCenter;
 
     // Start is called before the first frame update
     void Start()
     {
         LoadBlocks();
         ColorStartAndEnd();
-        Pathfind();
-        //ExploreNeighbours(startWaypoint);
-        
-        
+        Pathfind();        
     }
 
     private void Pathfind()
@@ -29,15 +27,15 @@ public class PathFinder : MonoBehaviour
         queue.Enqueue(startWaypoint);
         while (queue.Count > 0 && isRunning)
         {
-            var searchCenter = queue.Dequeue();
+            searchCenter = queue.Dequeue();
             searchCenter.isExplored = true;
             print("Searching from: " + searchCenter);
-            HaltIfEndFound(searchCenter);
-            ExploreNeighbours(searchCenter);
+            HaltIfEndFound();
+            ExploreNeighbours();
         }
     }
 
-    private void HaltIfEndFound(Waypoint searchCenter)
+    private void HaltIfEndFound()
     {
         if (searchCenter == endWaypoint)
         {
@@ -46,12 +44,12 @@ public class PathFinder : MonoBehaviour
         }
     }
 
-    public void ExploreNeighbours(Waypoint from)
+    public void ExploreNeighbours()
     {
         if (!isRunning) { return;  }
         foreach (Vector2Int direction in directions)
         {
-            Vector2Int neighbourCoords = from.GetGridPos() + direction;
+            Vector2Int neighbourCoords = searchCenter.GetGridPos() + direction;
             try
             {
                 NewNeighbour(neighbourCoords);
@@ -67,14 +65,16 @@ public class PathFinder : MonoBehaviour
     private void NewNeighbour(Vector2Int neighbourCoords)
     {
         Waypoint neighbour = grid[neighbourCoords];
-        if (neighbour.isExplored)
+        if (neighbour.isExplored || queue.Contains(neighbour))
         {
 
         }
         else
         {
             neighbour.SetTopColor(Color.blue);
+            print("Adding to queue: " + neighbour);
             queue.Enqueue(neighbour);
+            neighbour.exploredFrom = searchCenter;
         }
         
     }
