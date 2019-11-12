@@ -11,6 +11,7 @@ public class PathFinder : MonoBehaviour
     Dictionary<Vector2Int, Waypoint> grid = new Dictionary<Vector2Int, Waypoint>();
     Vector2Int[] directions = { Vector2Int.up, Vector2Int.down, Vector2Int.right, Vector2Int.left };
     Queue<Waypoint> queue = new Queue<Waypoint>();
+    public List<Waypoint> path = new List<Waypoint>();
     bool isRunning = true;
     Waypoint searchCenter;
 
@@ -19,17 +20,28 @@ public class PathFinder : MonoBehaviour
     {
         LoadBlocks();
         ColorStartAndEnd();
-        Pathfind();        
+        BreadthFirstSearch();
+        CreathPath();
     }
 
-    private void Pathfind()
+    private void CreathPath()
+    {
+        path.Add(endWaypoint);
+        Waypoint previous = endWaypoint.exploredFrom;
+        while (previous != startWaypoint)
+        {
+            path.Add(previous);
+            previous = previous.exploredFrom;
+        }
+    }
+
+    private void BreadthFirstSearch()
     {
         queue.Enqueue(startWaypoint);
         while (queue.Count > 0 && isRunning)
         {
             searchCenter = queue.Dequeue();
             searchCenter.isExplored = true;
-            print("Searching from: " + searchCenter);
             HaltIfEndFound();
             ExploreNeighbours();
         }

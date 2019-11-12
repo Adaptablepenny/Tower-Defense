@@ -5,11 +5,11 @@ using UnityEngine;
 public class EnemyPath : MonoBehaviour
 {
 
-    [SerializeField] List<Waypoint> path;
+   
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(FollowPath());
+        
         
     }
 
@@ -19,7 +19,7 @@ public class EnemyPath : MonoBehaviour
 
     }
 
-    IEnumerator FollowPath()//Moves the enemy along a path determined by the List Waypoint
+   /* IEnumerator FollowPath()//Moves the enemy along a path determined by the List Waypoint
     {
         foreach (Waypoint waypoint in path)
         {
@@ -27,5 +27,5 @@ public class EnemyPath : MonoBehaviour
             print("Waypoint: " + waypoint.name);        
             yield return new WaitForSeconds(1);
         }
-    }
+    }*/
 }
