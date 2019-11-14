@@ -9,7 +9,9 @@ public class EnemyPath : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        PathFinder pathfinder = FindObjectOfType<PathFinder>();
+        var path = pathfinder.GetPath();
+        StartCoroutine(FollowPath(path));
         
     }
 
@@ -19,13 +21,12 @@ public class EnemyPath : MonoBehaviour
 
     }
 
-   /* IEnumerator FollowPath()//Moves the enemy along a path determined by the List Waypoint
+    IEnumerator FollowPath(List<Waypoint> path)//Moves the enemy along a path determined by the List Waypoint
     {
         foreach (Waypoint waypoint in path)
         {
-            transform.position = waypoint.transform.position;
-            print("Waypoint: " + waypoint.name);        
+            transform.position = waypoint.transform.position;     
             yield return new WaitForSeconds(1);
         }
-    }*/
+    }
 }

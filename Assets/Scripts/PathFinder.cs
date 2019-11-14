@@ -11,17 +11,14 @@ public class PathFinder : MonoBehaviour
     Dictionary<Vector2Int, Waypoint> grid = new Dictionary<Vector2Int, Waypoint>();
     Vector2Int[] directions = { Vector2Int.up, Vector2Int.down, Vector2Int.right, Vector2Int.left };
     Queue<Waypoint> queue = new Queue<Waypoint>();
-    public List<Waypoint> path = new List<Waypoint>();
+    List<Waypoint> path = new List<Waypoint>();
     bool isRunning = true;
     Waypoint searchCenter;
 
     // Start is called before the first frame update
     void Start()
     {
-        LoadBlocks();
-        ColorStartAndEnd();
-        BreadthFirstSearch();
-        CreathPath();
+       
     }
 
     private void CreathPath()
@@ -33,6 +30,17 @@ public class PathFinder : MonoBehaviour
             path.Add(previous);
             previous = previous.exploredFrom;
         }
+        path.Add(startWaypoint);
+        path.Reverse();
+    }
+
+    public List<Waypoint>GetPath()
+    {
+        LoadBlocks();
+        ColorStartAndEnd();
+        BreadthFirstSearch();
+        CreathPath();
+        return path;
     }
 
     private void BreadthFirstSearch()
@@ -51,7 +59,6 @@ public class PathFinder : MonoBehaviour
     {
         if (searchCenter == endWaypoint)
         {
-            print("Halting Search");
             isRunning = false;
         }
     }
@@ -62,15 +69,10 @@ public class PathFinder : MonoBehaviour
         foreach (Vector2Int direction in directions)
         {
             Vector2Int neighbourCoords = searchCenter.GetGridPos() + direction;
-            try
+            if (grid.ContainsKey(neighbourCoords))
             {
                 NewNeighbour(neighbourCoords);
             }
-            catch
-            {
-                //nothing
-            }
-            
         }
     }
 
@@ -83,8 +85,6 @@ public class PathFinder : MonoBehaviour
         }
         else
         {
-            neighbour.SetTopColor(Color.blue);
-            print("Adding to queue: " + neighbour);
             queue.Enqueue(neighbour);
             neighbour.exploredFrom = searchCenter;
         }
