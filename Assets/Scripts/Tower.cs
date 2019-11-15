@@ -6,6 +6,7 @@ public class Tower : MonoBehaviour
     [SerializeField] GameObject enemies;
     [SerializeField] GameObject bullet;
     Transform enemy;
+    public Waypoint baseWaypoint;
     // Update is called once per frame
     void Start()
     {
