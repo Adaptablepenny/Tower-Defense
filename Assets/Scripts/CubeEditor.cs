@@ -24,7 +24,7 @@ public class CubeEditor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CubeSnaping();
+        //CubeSnaping();
         LabelText();
         
 
