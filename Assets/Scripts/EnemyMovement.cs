@@ -6,11 +6,12 @@ public class EnemyMovement : MonoBehaviour
 {
 
     
+
     // Start is called before the first frame update
     void Start()
     {
         PathFinder pathfinder = FindObjectOfType<PathFinder>();
-        var path = pathfinder.GetPath();
+        var path = pathfinder.GetPath();       
         StartCoroutine(FollowPath(path));
         
     }
