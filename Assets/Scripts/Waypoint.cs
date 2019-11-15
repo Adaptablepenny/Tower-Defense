@@ -6,6 +6,8 @@ public class Waypoint : MonoBehaviour
 {
     public bool isExplored = false;
     public Waypoint exploredFrom;
+    [SerializeField] Tower tower;
+    public bool isBlocked = false;
 
     Vector2Int gridPos;
     const int gridSize = 10;
@@ -30,8 +32,20 @@ public class Waypoint : MonoBehaviour
     }
     private void OnMouseOver()
     {
-        print(gameObject.name);
+        if (Input.GetMouseButtonDown(0) && !isBlocked)
+        {
+            SpawnTower();
+            print(gameObject.name);
+        }
+        
     }
+
+    void SpawnTower()
+    {
+        Instantiate(tower.gameObject, gameObject.transform);
+    }
+
+    
 
     // Update is called once per frame
     void Update()

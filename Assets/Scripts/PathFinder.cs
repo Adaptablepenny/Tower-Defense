@@ -25,9 +25,12 @@ public class PathFinder : MonoBehaviour
     {
         path.Add(endWaypoint);
         Waypoint previous = endWaypoint.exploredFrom;
+        endWaypoint.isBlocked = true;
+        startWaypoint.isBlocked = true;
         while (previous != startWaypoint)
         {
             path.Add(previous);
+            previous.isBlocked = true;
             previous = previous.exploredFrom;
         }
         path.Add(startWaypoint);
