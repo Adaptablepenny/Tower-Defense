@@ -5,17 +5,15 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
-    GameObject turret, Enemies, bullet;
+    [SerializeField] GameObject turret;
+    [SerializeField] GameObject enemies;
+    [SerializeField] GameObject bullet;
     Transform enemy;
     // Update is called once per frame
     void Start()
     {
-        FindGameObjects();
-        FindTransform();
+        
     }
-
-    
-
     void Update()
     {
         SetTargetEnemy();
@@ -75,18 +73,6 @@ public class Tower : MonoBehaviour
     {
         var fire = bullet.GetComponent<ParticleSystem>().emission;
         fire.enabled = isActive;
-    }
-    
-    private void FindGameObjects()
-    {
-        bullet = GameObject.Find("/Tower/Turret/Bullet");
-        turret = GameObject.Find("/Tower/Turret");
-        Enemies = GameObject.Find("Enemies");
-    }
-
-    void FindTransform()
-    {
-        enemy = Enemies.transform.Find("Enemy");
     }
   
 }

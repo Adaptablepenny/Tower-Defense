@@ -157,6 +157,7 @@ MonoBehaviour:
   exploredFrom: {fileID: 0}
   tower: {fileID: 3193945623467928151, guid: bf8fc635e81f6074586990eb1eed2cea, type: 3}
   isBlocked: 0
+  parent: {fileID: 0}
 --- !u!65 &278743883575747013
 BoxCollider:
   m_ObjectHideFlags: 0

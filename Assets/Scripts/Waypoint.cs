@@ -8,6 +8,7 @@ public class Waypoint : MonoBehaviour
     public Waypoint exploredFrom;
     [SerializeField] Tower tower;
     public bool isBlocked = false;
+    [SerializeField] Transform parent;
 
     Vector2Int gridPos;
     const int gridSize = 10;
@@ -36,13 +37,14 @@ public class Waypoint : MonoBehaviour
         {
             SpawnTower();
             print(gameObject.name);
+            isBlocked = true;
         }
         
     }
 
     void SpawnTower()
     {
-        Instantiate(tower.gameObject, gameObject.transform);
+        GameObject newTower = Instantiate(tower.gameObject, transform.position,Quaternion.identity);
     }
 
     
