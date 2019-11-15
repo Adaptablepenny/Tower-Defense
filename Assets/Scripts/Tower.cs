@@ -1,20 +1,24 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
-    GameObject turret, enemy, bullet;
+    GameObject turret, Enemies, bullet;
+    Transform enemy;
     // Update is called once per frame
     void Start()
     {
         FindGameObjects();
+        FindTransform();
     }
 
     
 
     void Update()
     {
+        SetTargetEnemy();
         if (enemy)
         {
             CheckDistanceAndFire();
@@ -24,6 +28,33 @@ public class Tower : MonoBehaviour
             ShootBullet(false);
         }
 
+    }
+
+    private void SetTargetEnemy()
+    {
+        var sceneEnemies = FindObjectsOfType<EnemyMovement>();
+        if (sceneEnemies.Length == 0) { return;  }
+
+        Transform closestEnemy = sceneEnemies[0].transform;
+
+        foreach (EnemyMovement enemy in sceneEnemies)
+        {
+            closestEnemy = GetClosest(closestEnemy, enemy.transform);
+        }
+        enemy = closestEnemy;
+    }
+
+    private Transform GetClosest(Transform transformA, Transform transformB)
+    {
+        var distA = Vector3.Distance(transform.position, transformA.position);
+        var distB = Vector3.Distance(transform.position, transformB.position);
+        
+        if (distA < distB)
+        {
+            return transformA;
+        }
+
+        return transformB;
     }
 
     private void CheckDistanceAndFire()
@@ -50,7 +81,12 @@ public class Tower : MonoBehaviour
     {
         bullet = GameObject.Find("/Tower/Turret/Bullet");
         turret = GameObject.Find("/Tower/Turret");
-        enemy = GameObject.Find("Enemy");
+        Enemies = GameObject.Find("Enemies");
+    }
+
+    void FindTransform()
+    {
+        enemy = Enemies.transform.Find("Enemy");
     }
   
 }
