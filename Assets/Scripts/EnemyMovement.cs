@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyPath : MonoBehaviour
+public class EnemyMovement : MonoBehaviour
 {
 
     
