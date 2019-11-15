@@ -1799,6 +1799,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1278359678}
   - component: {fileID: 1278359679}
+  - component: {fileID: 1278359680}
   m_Layer: 0
   m_Name: Pathing
   m_TagString: Untagged
@@ -1850,6 +1851,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startWaypoint: {fileID: 1724197643}
   endWaypoint: {fileID: 1886137128}
+--- !u!114 &1278359680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1278359677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ff6ea9a5b04c1a489a34bad6abcefa6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  towerLimit: 5
+  tower: {fileID: 3193945623467928151, guid: bf8fc635e81f6074586990eb1eed2cea, type: 3}
 --- !u!1001 &1329582061
 PrefabInstance:
   m_ObjectHideFlags: 0

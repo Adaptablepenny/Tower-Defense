@@ -1,12 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Waypoint : MonoBehaviour
 {
     public bool isExplored = false;
     public Waypoint exploredFrom;
-    [SerializeField] Tower tower;
     public bool isBlocked = false;
 
     Vector2Int gridPos;
@@ -34,19 +31,10 @@ public class Waypoint : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && !isBlocked)
         {
-            SpawnTower();
-            print(gameObject.name);
-            isBlocked = true;
+            FindObjectOfType<TowerFactory>().AddTower(this);
         }
         
-    }
-
-    void SpawnTower()
-    {
-        GameObject newTower = Instantiate(tower.gameObject, transform.position,Quaternion.identity);
-    }
-
-    
+    }    
 
     // Update is called once per frame
     void Update()
