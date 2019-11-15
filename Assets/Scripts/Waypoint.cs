@@ -8,7 +8,6 @@ public class Waypoint : MonoBehaviour
     public Waypoint exploredFrom;
     [SerializeField] Tower tower;
     public bool isBlocked = false;
-    [SerializeField] Transform parent;
 
     Vector2Int gridPos;
     const int gridSize = 10;

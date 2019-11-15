@@ -45,4 +45,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   secondsBetweenSpawns: 3
   parent: {fileID: 1092593196413237059}
-  enemy: {fileID: 5490539098276156392, guid: 0b2b260102381364d8fd96bf44841758, type: 3}
+  enemy: {fileID: 114941686308246830, guid: 04f81ff9814844ccfa08226f8d46a3f4, type: 3}
