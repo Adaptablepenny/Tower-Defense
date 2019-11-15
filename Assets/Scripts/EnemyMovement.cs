@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
+    float movementSpeed = .5f;
+    PathFinder pathfinder;
+    [SerializeField] ParticleSystem deathExplosion;
 
-    
+
 
     // Start is called before the first frame update
     void Start()
     {
-        PathFinder pathfinder = FindObjectOfType<PathFinder>();
+        pathfinder = FindObjectOfType<PathFinder>();
         var path = pathfinder.GetPath();       
         StartCoroutine(FollowPath(path));
         
@@ -27,7 +30,19 @@ public class EnemyMovement : MonoBehaviour
         foreach (Waypoint waypoint in path)
         {
             transform.position = waypoint.transform.position;
-            yield return new WaitForSeconds(1.75f);
+            yield return new WaitForSeconds(movementSpeed);
         }
+        if (transform.position == pathfinder.GetEndwaypoint().transform.position )
+        {
+            KillEnemy();
+            Destroy(gameObject);
+        }
+    }
+
+    private void KillEnemy()
+    {
+        var deathfx = Instantiate(deathExplosion, transform.position, Quaternion.identity);
+        deathfx.Play();
+        Destroy(gameObject);
     }
 }

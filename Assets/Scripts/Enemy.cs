@@ -21,10 +21,15 @@ public class Enemy : MonoBehaviour
         ProcessHit();
         if(hitPoints <= 0)
         {
-            var deathfx = Instantiate(deathExplosion, transform.position, Quaternion.identity);
-            deathfx.Play();
-            Destroy(gameObject);
+            KillEnemy();
         }
+    }
+
+    private void KillEnemy()
+    {
+        var deathfx = Instantiate(deathExplosion, transform.position, Quaternion.identity);
+        deathfx.Play();
+        Destroy(gameObject);
     }
 
     void ProcessHit()

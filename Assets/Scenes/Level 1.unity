@@ -1863,7 +1863,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ff6ea9a5b04c1a489a34bad6abcefa6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerLimit: 0
   tower: {fileID: 3193945623467928151, guid: bf8fc635e81f6074586990eb1eed2cea, type: 3}
 --- !u!1001 &1329582061
 PrefabInstance:

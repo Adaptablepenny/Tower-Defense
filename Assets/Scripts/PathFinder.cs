@@ -120,6 +120,11 @@ public class PathFinder : MonoBehaviour
         
     }
 
+    public Waypoint GetEndwaypoint()
+    {
+        return endWaypoint;
+    }
+
     // Update is called once per frame
     void Update()
     {
