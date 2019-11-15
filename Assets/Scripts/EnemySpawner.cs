@@ -33,7 +33,7 @@ public class EnemySpawner : MonoBehaviour
     IEnumerator SpawnEnemy()
     {
         GameObject spawnedEnemy = Instantiate(enemy.gameObject, transform.position, Quaternion.identity);
-        enemy.transform.parent = parent;
+        spawnedEnemy.transform.parent = parent;
         yield return null;
     }
 }
