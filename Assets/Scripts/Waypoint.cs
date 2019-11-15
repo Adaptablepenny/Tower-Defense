@@ -28,12 +28,9 @@ public class Waypoint : MonoBehaviour
                 gridPos.y = Mathf.RoundToInt(transform.position.z / gridSize)
             );
     }
-
-    public void SetTopColor(Color color)
+    private void OnMouseOver()
     {
-        MeshRenderer topMesh = transform.Find("Top").GetComponent<MeshRenderer>();
-        topMesh.material.color = color;
-        
+        print(gameObject.name);
     }
 
     // Update is called once per frame
