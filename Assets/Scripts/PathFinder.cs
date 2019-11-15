@@ -21,7 +21,7 @@ public class PathFinder : MonoBehaviour
        
     }
 
-    private void CreathPath()
+    private void CreatePath()
     {
         path.Add(endWaypoint);
         Waypoint previous = endWaypoint.exploredFrom;
@@ -39,7 +39,7 @@ public class PathFinder : MonoBehaviour
         LoadBlocks();
         ColorStartAndEnd();
         BreadthFirstSearch();
-        CreathPath();
+        CreatePath();
         return path;
     }
 

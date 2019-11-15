@@ -4,11 +4,30 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
-    [SerializeField] Transform objectToPan;
-    [SerializeField] Transform targetEnemy;
+    GameObject turret, enemy, bullet;
     // Update is called once per frame
+    void Start()
+    {
+        bullet = GameObject.Find("/Tower/Turret/Bullet");
+        turret = GameObject.Find("/Tower/Turret");
+        enemy = GameObject.Find("Enemy");
+    }
     void Update()
     {
-        objectToPan.LookAt(targetEnemy);
+        ShootBullet();
+        turret.transform.LookAt(enemy.transform);
+       
     }
+
+    void ShootBullet()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            var shoot = bullet.GetComponent<ParticleSystem>().emission;
+            shoot.enabled = enabled;
+        }
+       
+    }
+
+  
 }

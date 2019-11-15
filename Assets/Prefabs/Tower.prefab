@@ -45,8 +45,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ef80a3bbbe9b184caef7b14f48ab436, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToPan: {fileID: 4536847223610473484}
-  targetEnemy: {fileID: 0}
 --- !u!1001 &4537531390832527460
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -56,7 +54,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1405215511811078, guid: 8238921bafd389b44921fe80cc7f1f9d, type: 3}
       propertyPath: m_Name
-      value: Tower_A_Top
+      value: Turret
       objectReference: {fileID: 0}
     - target: {fileID: 4101459293844584, guid: 8238921bafd389b44921fe80cc7f1f9d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -102,6 +100,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4482263218620610688, guid: 8238921bafd389b44921fe80cc7f1f9d,
+        type: 3}
+      propertyPath: moveWithTransform
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4482263218620610688, guid: 8238921bafd389b44921fe80cc7f1f9d,
+        type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4482263218620610688, guid: 8238921bafd389b44921fe80cc7f1f9d,
+        type: 3}
+      propertyPath: ShapeModule.angle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4482263218620610688, guid: 8238921bafd389b44921fe80cc7f1f9d,
+        type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 0.0001
+      objectReference: {fileID: 0}
+    - target: {fileID: 4482263218620610688, guid: 8238921bafd389b44921fe80cc7f1f9d,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4482263218620610688, guid: 8238921bafd389b44921fe80cc7f1f9d,
+        type: 3}
+      propertyPath: CollisionModule.type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4482263218620610688, guid: 8238921bafd389b44921fe80cc7f1f9d,
+        type: 3}
+      propertyPath: CollisionModule.collisionMessages
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8238921bafd389b44921fe80cc7f1f9d, type: 3}
 --- !u!4 &4536847223610473484 stripped
@@ -119,7 +152,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1186746374734342, guid: 4e889d43572027a409a3dab490438a22, type: 3}
       propertyPath: m_Name
-      value: Tower_A_Base
+      value: Base
       objectReference: {fileID: 0}
     - target: {fileID: 4676767254080446, guid: 4e889d43572027a409a3dab490438a22, type: 3}
       propertyPath: m_LocalPosition.x

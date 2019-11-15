@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyPath : MonoBehaviour
 {
 
-   
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -25,8 +25,9 @@ public class EnemyPath : MonoBehaviour
     {
         foreach (Waypoint waypoint in path)
         {
-            transform.position = waypoint.transform.position;     
-            yield return new WaitForSeconds(1);
+
+            transform.position = new Vector3(waypoint.transform.position.x,transform.position.y,waypoint.transform.position.z);
+            yield return new WaitForSeconds(1.75f);
         }
     }
 }
