@@ -1,10 +1,13 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] int hitPoints = 10;
+    int hitPoints = 1;
     [SerializeField] ParticleSystem hitExplosion;
     [SerializeField] ParticleSystem deathExplosion;
+    
+    
 
     private void Start()
     {
@@ -18,6 +21,7 @@ public class Enemy : MonoBehaviour
 
     private void OnParticleCollision(GameObject enemy)
     {
+        
         ProcessHit();
         if(hitPoints <= 0)
         {
@@ -27,6 +31,8 @@ public class Enemy : MonoBehaviour
 
     private void KillEnemy()
     {
+        Base mainBase = GameObject.FindObjectOfType(typeof(Base)) as Base;
+        mainBase.IncrementScore();
         var deathfx = Instantiate(deathExplosion, transform.position, Quaternion.identity);
         deathfx.Play();
         Destroy(gameObject);

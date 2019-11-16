@@ -80,6 +80,7 @@ MonoBehaviour:
   hitPoints: 10
   hitExplosion: {fileID: 4669129876330244064}
   deathExplosion: {fileID: 6669339963075134600}
+  ScoreText: {fileID: 0}
 --- !u!1 &1646541640735296
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,6 +6,7 @@ public class EnemyMovement : MonoBehaviour
 {
     float movementSpeed = .5f;
     PathFinder pathfinder;
+    Base mainBase;
     [SerializeField] ParticleSystem deathExplosion;
 
 
@@ -34,13 +35,16 @@ public class EnemyMovement : MonoBehaviour
         }
         if (transform.position == pathfinder.GetEndwaypoint().transform.position )
         {
+            
             KillEnemy();
             Destroy(gameObject);
+
         }
     }
 
     private void KillEnemy()
     {
+        
         var deathfx = Instantiate(deathExplosion, transform.position, Quaternion.identity);
         deathfx.Play();
         Destroy(gameObject);
